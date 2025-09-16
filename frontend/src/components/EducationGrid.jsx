@@ -6,15 +6,15 @@ export default function EducationGrid() {
   const { data: education, loading, error } = useFetch(() => fetchEducation(), []);
 
   return (
-    <section id="education" className="section">
+    <section id="education" className="py-5 bg-light">
       <div className="container">
-        <h3>Eğitimler & Sertifikalar</h3>
+        <h2 className="text-center mb-5 fw-bold">🎓 Eğitimler</h2>
         {loading && <p>Yükleniyor...</p>}
-        {error && <p>Hata: {error}</p>}
+        {error && <p className="text-danger">Hata: {error}</p>}
 
-        <div className="scroll-container">
+        <div className="row g-4">
           {education?.map((e) => (
-            <div key={e._id} className="scroll-item">
+            <div key={e._id} className="col-md-4 col-sm-6">
               <EducationCard e={e} />
             </div>
           ))}

@@ -5,7 +5,7 @@ export default function CertificatesGrid() {
   const { data: certificates, loading, error } = useFetch(() => fetchCertificates(), []);
 
   return (
-    <section id="certificates" className="py-5">
+    <section id="certificates" className="py-5 bg-light">
       <div className="container">
         <h3 className="mb-4">🏆 Sertifikalar</h3>
         {loading && <p>Yükleniyor...</p>}

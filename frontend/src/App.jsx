@@ -11,6 +11,7 @@ import AdminLogin from './components/AdminLogin.jsx';
 import AdminDashboard from './components/AdminDashboard.jsx';
 import CertificatesGrid from './components/CertificatesGrid.jsx';
 import './index.css';
+import About from './components/About.jsx';
 
 export default function App() {
   const token = localStorage.getItem('token');
@@ -27,6 +28,7 @@ export default function App() {
               <>
                 <Navbar />
                 <Hero />
+                <About />
                 <Skills />
                 <ProjectsGrid />
                 <EducationGrid />

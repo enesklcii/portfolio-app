@@ -6,15 +6,15 @@ export default function ProjectsGrid() {
   const { data: projects, loading, error } = useFetch(() => fetchProjects(), []);
 
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="py-5 bg-light">
       <div className="container">
-        <h3>Projeler</h3>
+        <h2 className="text-center mb-5 fw-bold">📂 Projeler</h2>
         {loading && <p>Yükleniyor...</p>}
-        {error && <p>Hata: {error}</p>}
+        {error && <p className="text-danger">Hata: {error}</p>}
 
-        <div className="scroll-container">
+        <div className="row g-4">
           {projects?.map((p) => (
-            <div key={p._id} className="scroll-item">
+            <div key={p._id} className="col-md-4 col-sm-6">
               <ProjectCard p={p} />
             </div>
           ))}

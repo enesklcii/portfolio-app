@@ -1,40 +1,105 @@
-import { useState } from 'react';
-import { sendMessage } from '../api/index.js';
-
+import { useState } from "react";
+import { sendMessage } from "../api/index.js";
 
 export default function ContactForm() {
-const [form, setForm] = useState({ name: '', email: '', message: '' });
-const [status, setStatus] = useState('');
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await sendMessage(form);
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch (err) {
+      setStatus("error");
+    }
+  };
 
+  return (
+    <section id="contact" className="py-5 bg-light">
+      <div className="container">
+        <h2 className="text-center fw-bold mb-5">📧 İletişime Geç</h2>
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
+            <div className="card shadow-sm border-0">
+              <div className="card-body p-5">
+                <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold">Ad Soyad</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label fw-semibold">Mesaj</label>
+                    <textarea
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      rows={5}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary btn-lg w-100">
+                    {status === "loading" ? "⏳ Gönderiliyor..." : "📨 Gönder"}
+                  </button>
+                </form>
 
-const onSubmit = async (e) => {
-e.preventDefault();
-setStatus('');
-try {
-await sendMessage(form);
-setStatus('Mesajın iletildi, teşekkürler!');
-setForm({ name: '', email: '', message: '' });
-} catch (e) {
-setStatus('Bir hata oluştu.');
-}
-};
+                {/* Durum mesajları */}
+                {status === "success" && (
+                  <div className="alert alert-success mt-4">
+                    ✅ Mesajınız başarıyla gönderildi!
+                  </div>
+                )}
+                {status === "error" && (
+                  <div className="alert alert-danger mt-4">
+                    ❌ Bir hata oluştu, lütfen tekrar deneyin.
+                  </div>
+                )}
+              </div>
+            </div>
 
-
-return (
-<section id="contact" className="section">
-<div className="container">
-<h3>İletişim</h3>
-<form className="form" onSubmit={onSubmit}>
-<input name="name" placeholder="Adın" value={form.name} onChange={onChange} required />
-<input name="email" placeholder="E-posta" value={form.email} onChange={onChange} type="email" required />
-<textarea name="message" placeholder="Mesajın" value={form.message} onChange={onChange} required />
-<button type="submit">Gönder</button>
-</form>
-{status && <p className="status">{status}</p>}
-</div>
-</section>
-);
+            {/* Alternatif iletişim yolları */}
+            <div className="text-center mt-4">
+              <p className="text-muted">
+                Bana doğrudan şu kanallardan da ulaşabilirsiniz:
+              </p>
+              <a href="mailto:klc02enes36@gmail.com" className="btn btn-outline-dark me-2">
+                📧 Email
+              </a>
+              <a href="https://linkedin.com/in/enesklcii" target="_blank" rel="noreferrer" className="btn btn-outline-primary me-2">
+                💼 LinkedIn
+              </a>
+              <a href="https://github.com/enesklcii" target="_blank" rel="noreferrer" className="btn btn-outline-dark">
+                🐙 GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
