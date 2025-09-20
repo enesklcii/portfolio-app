@@ -8,11 +8,7 @@ export default function Navbar() {
   // Scroll olduğunda arka plan değiştir + aktif link bul
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
 
       // Aktif section belirleme
       const sections = [
@@ -41,15 +37,16 @@ export default function Navbar() {
   return (
     <header>
       <nav
-        className={`navbar navbar-expand-lg fixed-top ${
+        className={`navbar navbar-expand-lg fixed-top transition ${
           scrolled
-            ? "bg-white shadow-sm navbar-light"
+            ? "bg-dark bg-opacity-75 navbar-dark shadow-sm backdrop-blur"
             : "bg-transparent navbar-dark"
-        } transition`}
+        }`}
+        style={{ backdropFilter: scrolled ? "blur(8px)" : "none" }}
       >
         <div className="container">
           {/* Logo */}
-          <a className="navbar-brand fw-bold fs-4" href="#home">
+          <a className="navbar-brand fw-bold fs-4 text-warning" href="#home">
             🚀 Portföy
           </a>
 
@@ -77,7 +74,7 @@ export default function Navbar() {
                 <li key={link.id} className="nav-item">
                   <a
                     className={`nav-link ${
-                      active === link.id ? "fw-bold text-primary" : ""
+                      active === link.id ? "fw-bold text-info" : "text-light"
                     }`}
                     href={`#${link.id}`}
                   >

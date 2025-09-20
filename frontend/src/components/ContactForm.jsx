@@ -22,14 +22,15 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-5 bg-light">
+    <section id="contact" className="py-5 bg-dark text-light">
       <div className="container">
         <h2 className="text-center fw-bold mb-5">📧 İletişime Geç</h2>
         <div className="row justify-content-center">
           <div className="col-lg-8">
-            <div className="card shadow-sm border-0">
+            {/* Form kartı */}
+            <div className="card bg-secondary shadow-lg border-0 fade-in-up">
               <div className="card-body p-5">
-                <form onSubmit={handleSubmit} className="needs-validation" noValidate>
+                <form onSubmit={handleSubmit} noValidate>
                   <div className="mb-3">
                     <label className="form-label fw-semibold">Ad Soyad</label>
                     <input
@@ -37,7 +38,7 @@ export default function ContactForm() {
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control bg-dark text-light border-0"
                       required
                     />
                   </div>
@@ -48,7 +49,7 @@ export default function ContactForm() {
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      className="form-control"
+                      className="form-control bg-dark text-light border-0"
                       required
                     />
                   </div>
@@ -59,12 +60,17 @@ export default function ContactForm() {
                       value={form.message}
                       onChange={handleChange}
                       rows={5}
-                      className="form-control"
+                      className="form-control bg-dark text-light border-0"
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-lg w-100">
-                    {status === "loading" ? "⏳ Gönderiliyor..." : "📨 Gönder"}
+                  <button
+                    type="submit"
+                    className="btn btn-info btn-lg w-100 fw-bold"
+                  >
+                    {status === "loading"
+                      ? "⏳ Gönderiliyor..."
+                      : "📨 Gönder"}
                   </button>
                 </form>
 
@@ -83,17 +89,33 @@ export default function ContactForm() {
             </div>
 
             {/* Alternatif iletişim yolları */}
-            <div className="text-center mt-4">
+            <div
+              className="text-center mt-4 fade-in-up"
+              style={{ animationDelay: "0.3s" }}
+            >
               <p className="text-muted">
                 Bana doğrudan şu kanallardan da ulaşabilirsiniz:
               </p>
-              <a href="mailto:klc02enes36@gmail.com" className="btn btn-outline-dark me-2">
+              <a
+                href="mailto:klc02enes36@gmail.com"
+                className="btn btn-outline-light me-2"
+              >
                 📧 Email
               </a>
-              <a href="https://linkedin.com/in/enesklcii" target="_blank" rel="noreferrer" className="btn btn-outline-primary me-2">
+              <a
+                href="https://linkedin.com/in/enesklcii"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-info me-2"
+              >
                 💼 LinkedIn
               </a>
-              <a href="https://github.com/enesklcii" target="_blank" rel="noreferrer" className="btn btn-outline-dark">
+              <a
+                href="https://github.com/enesklcii"
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-outline-light"
+              >
                 🐙 GitHub
               </a>
             </div>

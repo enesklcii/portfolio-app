@@ -46,7 +46,7 @@ const run = async () => {
       linkedin: 'https://www.linkedin.com/in/enesklcii',
       website: 'https://seninsite.com'
     },
-    skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'REST API', 'Docker']
+    skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'REST API', 'Docker', 'React', 'Node.js', 'MongoDB', 'REST API', 'Docker', 'React', 'Node.js', 'MongoDB', 'REST API', 'Docker']
   });
 
   // Projeler
@@ -64,7 +64,47 @@ const run = async () => {
       description: 'Sepet ve ödeme simülasyonu olan basit e-ticaret front-end.',
       techStack: ['React', 'Vite', 'Stripe Mock'],
       repoUrl: 'https://github.com/kullanici/ecom-mini'
-    }
+    },
+    {
+      title: 'AI Q&A Bot',
+      description: 'Dış API ile entegre soru-cevap asistanı.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      repoUrl: 'https://github.com/kullanici/ai-qa-bot',
+      liveUrl: 'https://aiqabot.example.com',
+      featured: true
+    },
+    {
+      title: 'AI Q&A Bot',
+      description: 'Dış API ile entegre soru-cevap asistanı.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      repoUrl: 'https://github.com/kullanici/ai-qa-bot',
+      liveUrl: 'https://aiqabot.example.com',
+      featured: true
+    },
+    {
+      title: 'AI Q&A Bot',
+      description: 'Dış API ile entegre soru-cevap asistanı.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      repoUrl: 'https://github.com/kullanici/ai-qa-bot',
+      liveUrl: 'https://aiqabot.example.com',
+      featured: true
+    },
+    {
+      title: 'AI Q&A Bot',
+      description: 'Dış API ile entegre soru-cevap asistanı.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      repoUrl: 'https://github.com/kullanici/ai-qa-bot',
+      liveUrl: 'https://aiqabot.example.com',
+      featured: true
+    },
+    {
+      title: 'AI Q&A Bot',
+      description: 'Dış API ile entegre soru-cevap asistanı.',
+      techStack: ['React', 'Node.js', 'Express', 'MongoDB'],
+      repoUrl: 'https://github.com/kullanici/ai-qa-bot',
+      liveUrl: 'https://aiqabot.example.com',
+      featured: true
+    },
   ]);
 
   console.log('✅ Seed tamamlandı');
